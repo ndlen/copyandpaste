@@ -1,0 +1,437 @@
+/* Container chính */
+.app-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+/* Grid layout chia đôi */
+.app-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    height: 70vh;
+    max-height: 600px;
+    min-height: 500px;
+}
+
+/* Panel styles chung */
+.input-panel,
+.copy-panel {
+    background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-width: 0; /* Cho phép shrink */
+}
+
+/* Panel header */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(100, 108, 255, 0.2);
+}
+
+.panel-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    background: linear-gradient(45deg, #646cff, #535bf2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.panel-info {
+    background: rgba(100, 108, 255, 0.1);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #646cff;
+    font-weight: 500;
+    border: 1px solid rgba(100, 108, 255, 0.3);
+}
+
+/* Input section */
+.input-section {
+    flex: 1;
+    margin-bottom: 20px;
+    min-width: 0; /* Cho phép shrink */
+    overflow: hidden; /* Ngăn overflow */
+}
+
+.input-textarea {
+    width: 100%;
+    height: 100%;
+    min-height: 180px;
+    max-height: 250px;
+    background: rgba(42, 42, 42, 0.8);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: "Cascadia Code", "Fira Code", monospace;
+    box-sizing: border-box;
+}
+
+.input-textarea:focus {
+    outline: none;
+    border-color: #646cff;
+    box-shadow: 0 0 0 3px rgba(100, 108, 255, 0.1);
+}
+
+.input-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Button styles */
+.button-section {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #646cff, #535bf2);
+    color: white;
+    box-shadow: 0 4px 15px rgba(100, 108, 255, 0.3);
+}
+
+.btn-primary:hover:not(.disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(100, 108, 255, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #4a4a4a, #3a3a3a);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(45deg, #5a5a5a, #4a4a4a);
+    transform: translateY(-1px);
+}
+
+.btn-copy {
+    background: linear-gradient(45deg, #10b981, #059669);
+    color: white;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    /* Sử dụng cùng style với .btn */
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 8px;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    max-width: none;
+}
+
+.btn-copy:hover:not(.disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Copy panel */
+.copy-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Quan trọng để flex items có thể shrink */
+}
+
+/* Copy button section - giống như button-section */
+.copy-button-section {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0; /* Không cho nút bị shrink */
+}
+
+.waiting-state {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.waiting-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    animation: pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        opacity: 0.6;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Preview section */
+.preview-section {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 0; /* Quan trọng cho flex shrinking */
+}
+
+.preview-list {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    max-height: 300px; /* Giới hạn chiều cao */
+    min-height: 150px; /* Chiều cao tối thiểu */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    margin-bottom: 0;
+}
+
+.preview-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.preview-list::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.preview-list::-webkit-scrollbar-thumb {
+    background: #646cff;
+    border-radius: 3px;
+}
+
+.preview-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.preview-item.current {
+    background: rgba(100, 108, 255, 0.15);
+    border-color: #646cff;
+    transform: scale(1.02);
+}
+
+.preview-item.completed {
+    background: rgba(16, 185, 129, 0.1);
+    border-color: rgba(16, 185, 129, 0.3);
+    opacity: 0.7;
+}
+
+.preview-item.pending {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.preview-number {
+    background: #646cff;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    min-width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.preview-item.completed .preview-number {
+    background: #10b981;
+}
+
+.preview-text {
+    flex: 1;
+    word-wrap: break-word;
+    line-height: 1.4;
+}
+
+/* Responsive design */
+/* Large laptops and desktops */
+@media (min-width: 1200px) {
+    .app-container {
+        max-width: 1100px;
+    }
+
+    .app-grid {
+        height: 65vh;
+        max-height: 650px;
+    }
+}
+
+/* Standard laptops (1024-1199px) */
+@media (max-width: 1199px) and (min-width: 1024px) {
+    .app-container {
+        max-width: 950px;
+        padding: 16px;
+    }
+
+    .app-grid {
+        height: 65vh;
+        max-height: 550px;
+        gap: 20px;
+    }
+
+    .input-panel,
+    .copy-panel {
+        padding: 18px;
+    }
+
+    .input-textarea {
+        min-height: 160px;
+        max-height: 220px;
+    }
+}
+
+/* Small laptops (769-1023px) */
+@media (max-width: 1023px) and (min-width: 769px) {
+    .app-container {
+        max-width: 750px;
+        padding: 14px;
+    }
+
+    .app-grid {
+        height: 70vh;
+        max-height: 500px;
+        gap: 16px;
+    }
+
+    .input-panel,
+    .copy-panel {
+        padding: 16px;
+    }
+
+    .panel-title {
+        font-size: 1.1rem;
+    }
+
+    .input-textarea {
+        min-height: 140px;
+        max-height: 200px;
+        font-size: 0.85rem;
+    }
+
+    .btn {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        min-height: 44px;
+    }
+
+    .btn-copy {
+        padding: 14px 20px;
+        min-height: 48px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .app-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        height: auto;
+    }
+
+    .app-container {
+        padding: 16px;
+    }
+
+    .input-panel,
+    .copy-panel {
+        padding: 18px;
+    }
+
+    .panel-title {
+        font-size: 1.15rem;
+    }
+
+    .button-section {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .preview-list {
+        max-height: 300px;
+    }
+
+    .input-textarea {
+        min-height: 150px;
+        max-height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .app-container {
+        padding: 12px;
+    }
+
+    .input-panel,
+    .copy-panel {
+        padding: 16px;
+    }
+
+    .panel-header {
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+    }
+}
