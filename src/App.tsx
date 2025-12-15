@@ -63,18 +63,6 @@ function App() {
         setLines([]);
     };
 
-    const getCurrentText = () => {
-        if (currentIndex >= lines.length) {
-            return "Đã hết dữ liệu";
-        }
-        return lines[currentIndex] || "";
-    };
-
-    const getProgressPercentage = () => {
-        if (lines.length === 0) return 0;
-        return Math.round((currentIndex / lines.length) * 100);
-    };
-
     const getProcessedLineCount = () => {
         return inputData
             .split("\n")
@@ -154,7 +142,10 @@ function App() {
                         <div className="copy-section">
                             {lines.length > 0 && (
                                 <div className="preview-section">
-                                    <div className="preview-list" ref={previewListRef}>
+                                    <div
+                                        className="preview-list"
+                                        ref={previewListRef}
+                                    >
                                         {lines.map((line, index) => (
                                             <div
                                                 key={index}
