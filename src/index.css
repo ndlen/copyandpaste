@@ -30,7 +30,9 @@ a:hover {
 body {
     margin: 0;
     min-width: 320px;
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden; /* Không cho scroll toàn trang */
     background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
     background-attachment: fixed;
 }
